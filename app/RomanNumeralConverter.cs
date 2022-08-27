@@ -32,7 +32,7 @@ public static class RomanNumeralConverter
     /// <returns>Converted numeral as integer or 0 if the string is invalid</returns>
     public static int ConvertRomanToInt(this string s)
     {
-        // if the string does not the roman numeral regex, return 0
+        // if the string does not match the roman numeral regex, return 0
         if (!romanNumbersRegex.IsMatch(s))
             return 0;
 
