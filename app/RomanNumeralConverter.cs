@@ -1,4 +1,3 @@
-using System;
 using System.Text.RegularExpressions;
 
 /// <summary>
@@ -30,9 +29,10 @@ public static class RomanNumeralConverter
     /// </example>
     /// </summary>
     /// <param name="s">The string to be converted</param>
-    /// <returns>Converted numeral as integer</returns>
+    /// <returns>Converted numeral as integer or 0 if the string is invalid</returns>
     public static int ConvertRomanToInt(this string s)
     {
+        // if the string does not the roman numeral regex, return 0
         if (!romanNumbersRegex.IsMatch(s))
             return 0;
 
@@ -41,6 +41,7 @@ public static class RomanNumeralConverter
         {
             if (romanNumbersDictionary.TryGetValue(s[i], out int num))
             {
+                // if next numeral is greater than current numeral: substract current from sum, else: add current to sum
                 if (i + 1 < s.Length && romanNumbersDictionary[s[i + 1]] > romanNumbersDictionary[s[i]])
                     sum -= num;
                 else
